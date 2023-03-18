@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
+const { connect } = require('./helpers/dbConnect')
 
 const app = express();                              //Servidor
 const port = process.env.PORT;
@@ -15,8 +16,10 @@ app.use(express.urlencoded({ extended: false }))    // Parse application/x-www-f
 app.use(express.json())                             // Parse application/json
 
 //Conexión
+connect();
 
 //Rutas
+
 
 //404
 
