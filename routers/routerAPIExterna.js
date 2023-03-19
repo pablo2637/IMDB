@@ -5,11 +5,11 @@ const {getMovies, getMovie} = require('../controllers/controllerAPIExterna')
 
 
 
-//* obtener todas las películas
+//* VIEW USUARIO: BUSCAR PELÍCULA (obtener todas las películas)
 router.get('/', getMovies);
 
 
-//* obtener una película
+//* VIEW USUARIO: DETALLE PELÍCULA (obtener una película)
 router.get('/:id', getMovie);
 
 

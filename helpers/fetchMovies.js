@@ -4,25 +4,26 @@ const fetchMovies = async (url) => {
 
     try {
 
-        const request = await fetch(`${urlBase}/AdvancedSearch/k_9yd5ebs9?title=Inception`); //! pendiente modificar
+        const request = await fetch(`${urlBase}/${url}`); //! pendiente: modificar url en controller
 
-        const {results} = await request.json();
+        const response = await request.json();
 
-        if(results){
+        if(response){
             return {
                 ok: true,
-                data: results
-            }
+                data: response
+            };
         }else{
             return {
                 ok: false,
                 msg: 'ERROR: no se ha podido conectar con la API.'
-            }
+            };
         };
         
     } catch (error) {
 
         console.log(error);
+        return error;
         
     };
 
