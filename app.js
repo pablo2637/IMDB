@@ -19,7 +19,7 @@ app.use(express.json())                             // Parse application/json
 connect();
 
 //Rutas
-
+app.use('/api/movies/imdb', require('./routers/routerAPIExterna')); // ruta API externa (IMDb)
 
 //404
 
