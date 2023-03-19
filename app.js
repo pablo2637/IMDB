@@ -19,7 +19,7 @@ app.use(express.json())                             // Parse application/json
 connect();
 
 //Rutas
-app.use('/api/movies', require('./routers/routerApiMoviesAdmin'));
+app.use('/api/movies/mongo', require('./routers/routerApiMoviesAdmin'));
 
 //404
 
