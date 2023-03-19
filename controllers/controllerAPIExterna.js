@@ -45,9 +45,9 @@ const getMovie = async (req, res) => {
 
     const {data} = await fetchMovies(url);
 
-    const {id: id_movie, title, image, year, directors, genres, runtimeStr: length, plot, stars: actors, imDbRating: rating} = data;
+    const {id: id_movie, title, image, year, directors, genres, runtimeStr, plot, stars, imDbRating} = data;
 
-    const movie = {id_movie, title, image, year, directors, genres, length, plot, actors, rating}; //! pendiente: agregar las opiniones del scrapping
+    const movie = {id_movie, title, image, year, directors, genres, runtimeStr, plot, stars, imDbRating}; //! pendiente: agregar las opiniones del scrapping
 
 
 
