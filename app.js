@@ -19,6 +19,7 @@ app.use(express.json())                             // Parse application/json
 connect();
 
 //Rutas
+app.use('/', require('./routers/routerFrontUsuario')); // ruta front usuario
 app.use('/api/movies/mongo', require('./routers/routerApiMoviesAdmin'));
 app.use('/api/movies/imdb', require('./routers/routerAPIExterna')); // ruta API externa (IMDb)
 
