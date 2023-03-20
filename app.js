@@ -20,6 +20,7 @@ connect();
 
 //Rutas
 app.use('/api/movies/imdb', require('./routers/routerAPIExterna')); // ruta API externa (IMDb)
+app.use('/api/movies', require('./routers/routerApiMoviesAdmin'));
 
 //404
 

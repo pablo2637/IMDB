@@ -20,7 +20,7 @@ const MovieSchema = new Schema({
         trim: true
     },
     stars: {
-        type: Array,
+        type: String,
         required: true,
     },
     genres: {
@@ -28,7 +28,7 @@ const MovieSchema = new Schema({
         required: true,
     },
     runtimeStr: {
-        type: Number,
+        type: String,
         required: true
     },
     plot: {
