@@ -4,6 +4,7 @@ const urlApiKeyIMDB = process.env.API_IMDB;
 const urlMoviesMongo = 'movies/mongo';
 // const urlMoviesIMDB = 'movies/imdb';
 const urlBaseIMDB = 'https://imdb-api.com/API';
+const urlDashboardUser = 'dashboard-usuario'
 
 const fetchData = async (tipo, data) => {
     const body = data.body;
@@ -44,7 +45,7 @@ const fetchData = async (tipo, data) => {
             url = `${urlBase}/${urlAPI}/${urlMoviesMongo}/${params.id}`;
             options = { method: 'DELETE' }
             break;
-
+        
 
         //Api externa imdb **************************************************
         case 'getMoviesExt':
@@ -55,7 +56,23 @@ const fetchData = async (tipo, data) => {
             break;
 
 
-    }
+        //?API interna MongoDB: favoritas **************************************************
+        case 'getMoviesFav':
+            url = `${urlBase}/${urlDashboardUser}/favoritas/${params.id_user}/${params.id_movie}`; //! tengo dudas de cómo capturar el id_user y el id_movie para pasárselo en la url
+            break;
+        case 'guardarMovieFav':
+            url = `${urlBase}/${urlDashboardUser}/guardar-fav/${params.id_user}/${params.id_movie}`; //! pendiente revisar
+            options = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: bodyJSON
+            }
+            break;
+        case 'eliminarMovieFav':
+            url = `${urlBase}/${urlDashboardUser}/eliminar-fav/${params.id_user}/${params.id_movie}`; //! pendiente revisar
+            options = { method : 'DELETE' };
+            break;
+    };
 
 
     try {
@@ -65,19 +82,19 @@ const fetchData = async (tipo, data) => {
             ok: false,
             msg: 'Error fetchData',
             response
-        }
+        };
 
         return {
             ok: true,
             data: response
-        }
+        };
     } catch (e) {
         console.log('error', e)
         return {
             ok: false,
             error: e
-        }
-    }
-}
+        };
+    };
+};
 
 module.exports = { fetchData }
