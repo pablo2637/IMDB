@@ -4,6 +4,7 @@ const urlApiKeyIMDB = process.env.API_IMDB;
 const urlMoviesMongo = 'movies/mongo';
 // const urlMoviesIMDB = 'movies/imdb';
 const urlBaseIMDB = 'https://imdb-api.com/API';
+const urlDashboardUser = 'dashboard-usuario'
 
 const fetchData = async (tipo, data) => {
     const body = data.body;
@@ -44,7 +45,7 @@ const fetchData = async (tipo, data) => {
             url = `${urlBase}/${urlAPI}/${urlMoviesMongo}/${params.id}`;
             options = { method: 'DELETE' }
             break;
-
+        
 
         //Api externa imdb **************************************************
         case 'getMoviesExt':
@@ -55,7 +56,27 @@ const fetchData = async (tipo, data) => {
             break;
 
 
-    }
+        //?API interna SQL: usuarios.favoritas **************************************************
+        case 'getMoviesFav':
+            url = `${urlBase}/${urlDashboardUser}/favoritas/${params.id_user}`;
+            break;
+        case 'guardarMovieFav':
+            url = `${urlBase}/${urlDashboardUser}/guardar-fav/${params.id_user}?id_movie=${params.id_movie}`; //! pendiente revisar
+            options = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: bodyJSON // params.id_movie
+            }
+            break;
+        case 'actualizarMoviesFav':
+            url = `${urlBase}/${urlDashboardUser}/eliminar-fav/${params.id_user}?id_movie=${params.id_movie}`; //! pendiente revisar
+            options = {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: bodyJSON // params.id_movie
+            };
+            break;
+    };
 
 
     try {
@@ -65,19 +86,19 @@ const fetchData = async (tipo, data) => {
             ok: false,
             msg: 'Error fetchData',
             response
-        }
+        };
 
         return {
             ok: true,
             data: response
-        }
+        };
     } catch (e) {
         console.log('error', e)
         return {
             ok: false,
             error: e
-        }
-    }
-}
+        };
+    };
+};
 
 module.exports = { fetchData }

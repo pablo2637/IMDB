@@ -21,6 +21,7 @@ connect();
 //Rutas
 app.use('/api/movies/mongo', require('./routers/routerApiMoviesAdmin'));
 app.use('/api/movies/imdb', require('./routers/routerAPIExterna')); // ruta API externa (IMDb)
+app.use('/dashboard-usuario', require('./routers/routerMoviesFav')); // ruta usuario películas favoritas
 
 //404
 
