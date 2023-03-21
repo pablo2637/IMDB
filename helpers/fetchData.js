@@ -56,21 +56,25 @@ const fetchData = async (tipo, data) => {
             break;
 
 
-        //?API interna MongoDB: favoritas **************************************************
+        //?API interna SQL: usuarios.favoritas **************************************************
         case 'getMoviesFav':
-            url = `${urlBase}/${urlDashboardUser}/favoritas/${params.id_user}/${params.id_movie}`; //! tengo dudas de cómo capturar el id_user y el id_movie para pasárselo en la url
+            url = `${urlBase}/${urlDashboardUser}/favoritas/${params.id_user}`;
             break;
         case 'guardarMovieFav':
-            url = `${urlBase}/${urlDashboardUser}/guardar-fav/${params.id_user}/${params.id_movie}`; //! pendiente revisar
+            url = `${urlBase}/${urlDashboardUser}/guardar-fav/${params.id_user}?id_movie=${params.id_movie}`; //! pendiente revisar
             options = {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: bodyJSON
+                body: bodyJSON // params.id_movie
             }
             break;
-        case 'eliminarMovieFav':
-            url = `${urlBase}/${urlDashboardUser}/eliminar-fav/${params.id_user}/${params.id_movie}`; //! pendiente revisar
-            options = { method : 'DELETE' };
+        case 'actualizarMoviesFav':
+            url = `${urlBase}/${urlDashboardUser}/eliminar-fav/${params.id_user}?id_movie=${params.id_movie}`; //! pendiente revisar
+            options = {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: bodyJSON // params.id_movie
+            };
             break;
     };
 
