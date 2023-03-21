@@ -28,7 +28,7 @@ router.post('/',[
     .not()
     .isEmpty()
     .custom((value, {req})=>{
-        if(value < 1800 || value >40){
+        if(value < 1800 || value >2023){
             throw new Error("el año de la película no es un año que sea real")
         }
         return true
