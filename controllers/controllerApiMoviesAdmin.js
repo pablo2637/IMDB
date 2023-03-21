@@ -46,6 +46,10 @@ const getMovie = async ({ params }, res) => {
         })
     }
 }
+const formularioNuevaPelicula = (req,res) =>{
+    res.render("../views/admin/vistaCrearPelicula")    
+
+}
 
 //Crea una película nueva
 const postMovie = async ({ body }, res) => {
@@ -123,6 +127,7 @@ const deleteMovie = async ({ params }, res) => {
 module.exports = {
     getMovies,
     getMovie,
+    formularioNuevaPelicula,
     postMovie,
     putMovie,
     deleteMovie
