@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
 
+const {getMovies} = require('../controllers/controllerAdmin');
 
 
 //* MOSTRAR TODAS LAS PELÍCULAS
-router.get('/');
+router.get('/', getMovies);
 
 
 //* MOSTRAR EL FORMULARIO DE CREAR PELÍCULA
