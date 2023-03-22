@@ -1,7 +1,15 @@
 const express = require('express');
 const router = express.Router();
 
-const {getMovies} = require('../controllers/controllerAdmin');
+const {
+    getMovies,
+    mostrarFormularioNueva,
+    crearMovieNueva,
+    mostrarFormularioEditar,
+    editarMovie,
+    eliminarMovie
+} = require('../controllers/controllerFrontAdmin');
+
 
 
 //* MOSTRAR TODAS LAS PELÍCULAS
