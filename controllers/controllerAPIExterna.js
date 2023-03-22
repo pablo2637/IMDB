@@ -29,8 +29,8 @@ const getMovies = async (req, res) => {
             runtimeStr: item.runtimeStr
         });
     });
-    return arrayMovies;
-
+    
+    //return arrayMovies;
 
 
     res.send(arrayMovies); //! pendiente: render
