@@ -31,10 +31,13 @@ app.use(auth(config));                              //Auth0 config
 connect();
 
 //Rutas
-app.use('/', require('./routers/routerFront')); //test  
+app.use('/', require('./routers/routerFront')); //test auth0
+// API Mongo
 app.use('/api/movies/mongo', require('./routers/routerApiMoviesAdmin'));
-app.use('/api/movies/imdb', require('./routers/routerAPIExterna')); // ruta API externa (IMDb)
-app.use('/dashboard-usuario', require('./routers/routerMoviesFav')); // ruta usuario películas favoritas
+// ruta API externa (IMDb)
+app.use('/api/movies/imdb', require('./routers/routerAPIExterna'));
+// ruta usuario películas favoritas
+app.use('/dashboard-usuario', require('./routers/routerMoviesFav'));
 
 //404
 
