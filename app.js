@@ -33,11 +33,11 @@ connect();
 //Rutas
 app.use('/', require('./routers/routerFront')); //test auth0
 // API Mongo
-app.use('/api/movies/mongo', require('./routers/routerApiMoviesAdmin'));
-// ruta API externa (IMDb)
-app.use('/api/movies/imdb', require('./routers/routerAPIExterna'));
-// ruta usuario películas favoritas
-app.use('/dashboard-usuario', require('./routers/routerMoviesFav'));
+app.use('/api/movies/mongo', require('./routers/routerApiMoviesAdmin')); // ruta API Mongo
+app.use('/api/movies/imdb', require('./routers/routerAPIExterna')); // ruta API externa (IMDb)
+app.use('/dashboard-usuario', require('./routers/routerMoviesFav')); // ruta usuario películas favoritas
+app.use('/dashboard-admin', require('./routers/routerFrontAdmin')); // ruta admin para crear, editar y eliminar películas
+
 
 //404
 
