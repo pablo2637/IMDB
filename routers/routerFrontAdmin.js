@@ -18,22 +18,23 @@ router.get('/', getMovies);
 
 //* MOSTRAR EL FORMULARIO DE CREAR PELÍCULA
 router.get('/nueva');
-
+ 
 
 //* CREAR NUEVA PELÍCULA
 router.post('/crear-pelicula',); // ruta del action del form
 
 
 //* MOSTRAR EL FORMULARIO DE EDITAR PELÍCULA
-router.get('/editar/:id');
+router.get('/dashboard-admin/editar/:id', mostrarFormularioEditar);
 
 
 //* EDITAR UNA PELÍCULA
-router.post('/actualizar/:id'); // ruta del action del form
+router.post('/dashboard-admin/editar/:id', editarMovie);
+// ruta del action del form
 
 
 //* ELIMINAR UNA PELÍCULA
-router.get('/eliminar/:id');
+router.post('/eliminar/:id', eliminarMovie);
 
 
 
