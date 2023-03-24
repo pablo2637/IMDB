@@ -46,10 +46,6 @@ const getMovie = async ({ params }, res) => {
         })
     }
 }
-const formularioNuevaPelicula = (req,res) =>{
-    res.render("../views/admin/vistaCrearPelicula")    
-
-}
 
 //Crea una película nueva
 const postMovie = async ({ body }, res) => {
