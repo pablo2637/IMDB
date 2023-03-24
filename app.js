@@ -31,8 +31,8 @@ app.use(auth(config));                              //Auth0 config
 connect();
 
 //Rutas
-app.use('/', require('./routers/routerFront')); //test auth0
-// API Mongo
+app.use('/', require('./routers/routerFront')); //ruta Front
+app.use('/api/scrapping', require('./routers/routerScrapping')); //ruta Scrapping
 app.use('/api/movies/mongo', require('./routers/routerApiMoviesAdmin')); // ruta API Mongo
 app.use('/api/movies/imdb', require('./routers/routerAPIExterna')); // ruta API externa (IMDb)
 app.use('/dashboard-usuario', require('./routers/routerMoviesFav')); // ruta usuario películas favoritas
