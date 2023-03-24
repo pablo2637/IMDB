@@ -123,6 +123,7 @@ const deleteMovie = async ({ params }, res) => {
 module.exports = {
     getMovies,
     getMovie,
+    formularioNuevaPelicula,
     postMovie,
     putMovie,
     deleteMovie
