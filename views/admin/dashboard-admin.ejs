@@ -12,8 +12,10 @@
                     <p><%= item.directors %></p>
                     <p><%= item.genres %></p>
                     <p><%= item.runtimeStr %></p>
-                    <a href="/dashboard-admin/editar/<%= item._id %>">Editar</a>
-                    <a href="/dashboard-admin/eliminar/<%= item._id %>">Eliminar</a>
+                    <a href="/dashboard-admin/editar/<%= item._id %>" method="GET">Editar</a>
+                    <form action="/dashboard-admin/eliminar/<%= item._id %>" method="POST">
+                    <button type="submit">Eliminar</button>
+                      </form>
                 </article>
             <% }) %>
         <% } else { %>
