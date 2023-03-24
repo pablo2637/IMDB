@@ -78,7 +78,7 @@ const fetchData = async (tipo, data) => {
             break;
     };
 
-
+    //Fetch
     try {
         const request = await fetch(url, options);
         const response = await request.json();

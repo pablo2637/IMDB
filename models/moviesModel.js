@@ -36,7 +36,7 @@ const MovieSchema = new Schema({
         required: true,
         trim: true
     },
-    imDbRating: {
+    imdbRating: {
         type: String,
     }
 })

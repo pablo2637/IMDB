@@ -17,8 +17,8 @@ router.get('/', getMovies);
 
 
 //* MOSTRAR EL FORMULARIO DE CREAR PELÍCULA
-router.get('/nueva');
- 
+router.get('/nueva', mostrarFormularioNueva);
+
 
 //* CREAR NUEVA PELÍCULA
 router.post('/crear-pelicula',); // ruta del action del form

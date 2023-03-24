@@ -23,7 +23,8 @@ router.post('/',[
     .isEmpty(),
     check("image","Se necesita una imagen para añadir a la informacion de la pelicula")
     .not()
-    .isEmpty(),
+    .isEmpty()
+    .isURL(),
     check("year","Se necesita el año de creación de la película")
     .not()
     .isEmpty()
@@ -45,8 +46,26 @@ router.post('/',[
         }
         return true
     }),
+    check("genres","introduzca un gener valido")
+    .not()
+    .isEmpty(),
+    check("runtimeStr","introduzca la duración de la película")
+    .isEmpty()
+    .not(),
+    check("plot","introduzca un sinopsis de la película")
+    .not()
+    .isEmpty()
+    .isLength({ min: 50, max: 250 }),
+    check("imDbRating","introduzca un ratio valido")
+    .isEmpty()
+    .not()
+    .custom((value,{req})=>{
+        if(value<=0 || value >=5){
+            throw new Error ("el ratio deberá oscilar entre 0 y 5 puntos")
+        }
+        return true
+    }),
     validarInputs
-    //deberá de modificarse a partir del schema final que queramos elegir
 ], postMovie);                //Crea una nueva película
 
 router.put('/:id', putMovie);               //Modifica la película
