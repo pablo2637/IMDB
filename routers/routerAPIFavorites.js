@@ -3,7 +3,6 @@ const router = express.Router();
 
 const {
     getFavorites,
-    getFavorite,
     addFavorite,
     deleteFavorite
 } = require('../controllers/controllerAPIFavorites')
@@ -12,10 +11,6 @@ const {
 
 //* OBTENER TODAS LAS PELÍCULAS FAVORITAS
 router.get('/', getFavorites);
-
-
-//* OBTENER UNA PELÍCULA FAVORITA
-router.get('/:id', getFavorite);
 
 
 //* GUARDAR PELÍCULA FAVORITA
