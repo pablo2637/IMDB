@@ -47,15 +47,13 @@ const getFavorites = async (req, res) => {
 
 const addFavorite = async (req, res) => {
 
-    const datos = {user_id: 1, movie_id: 'tt0816692', api_movie: 'imdb'}; // datos de prueba (sí existe en bbdd)
-
     try {
 
-        const searchMovie = await modelSearchMovieByID(datos);
+        const searchMovie = await modelSearchMovieByID(req.body);
 
         if(searchMovie){ // si no existe movie_id en user_id, se guarda como favorita
 
-            await modelAddFavorite(datos);
+            await modelAddFavorite(req.body);
 
             return res.status(201).json({
                 ok: true,
@@ -66,7 +64,7 @@ const addFavorite = async (req, res) => {
 
             return res.status(400).json({
                 ok: false,
-                msg: `ERROR: el usuario con ID '${datos.user_id}' ya tiene la película con ID '${datos.movie_id}' guardada como favorita en su perfil.`
+                msg: `ERROR: el usuario con ID '${req.body.user_id}' ya tiene la película con ID '${req.body.movie_id}' guardada como favorita en su perfil.`
             });
 
         };
