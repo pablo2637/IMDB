@@ -35,6 +35,7 @@ app.use('/', require('./routers/routerFront')); //ruta Front
 app.use('/api/scrapping', require('./routers/routerScrapping')); //ruta Scrapping
 app.use('/api/movies/mongo', require('./routers/routerApiMoviesAdmin')); // ruta API Mongo
 app.use('/api/movies/imdb', require('./routers/routerAPIExterna')); // ruta API externa (IMDb)
+app.use('/api/favorites', require('./routers/routerAPIFavorites')); // ruta API SQL - favoritas
 app.use('/dashboard-usuario', require('./routers/routerMoviesFav')); // ruta usuario películas favoritas
 app.use('/dashboard-admin', require('./routers/routerFrontAdmin')); // ruta admin para crear, editar y eliminar películas
 

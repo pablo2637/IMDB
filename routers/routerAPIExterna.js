@@ -6,7 +6,7 @@ const {getMovies, getMovie} = require('../controllers/controllerAPIExterna')
 
 
 //* VIEW USUARIO: BUSCAR PELÍCULA (obtener todas las películas)
-router.get('/:title', getMovies);
+router.get('/?title=', getMovies);
 
 
 //* VIEW USUARIO: DETALLE PELÍCULA (obtener una película)
