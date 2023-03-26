@@ -70,9 +70,32 @@ const modelAddFavorite = async (datos) => {
 }; //!FUNC-MODELADDFAVORITE
 
 
-const modelDeleteFavorite = async () => {
+const modelDeleteFavorite = async (datos) => {
 
+    let client, result;
 
+    const {user_id, movie_id} = datos;
+
+    try {
+
+        client = await pool.connect();
+
+        const data = await client.query(queries.queryDeleteFavorite, [user_id, movie_id]);
+
+        result = data;
+        
+    } catch (error) {
+
+        console.log(error);
+        throw error;
+        
+    } finally {
+
+        client.release();
+
+    };
+
+    return result;
 
 }; //!FUNC-MODELDELETEFAVORITE
 
@@ -89,7 +112,7 @@ const modelSearchMovieByID = async (datos) => {
 
         const data = await client.query(queries.querySearchMovieByID, [user_id, movie_id]);
 
-        data.rowCount == 0 ? result = true : result = false;
+        data.rowCount == 0 ? result = false : result = true;
                 
     } catch (error) {
 
