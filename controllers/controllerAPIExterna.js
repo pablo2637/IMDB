@@ -12,6 +12,7 @@ const getMovies = async (req, res) => {
     //const url = `AdvancedSearch/${process.env.API_KEY}?title=${titulo}`; //* provisional
 
     // const { data } = await fetchMovies(url);
+
     const { data } = await fetchData('getMoviesExt', req);
 
     const { results } = data;

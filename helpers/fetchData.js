@@ -49,7 +49,7 @@ const fetchData = async (tipo, data) => {
 
         //Api externa imdb **************************************************
         case 'getMoviesExt':
-            url = `${urlBaseIMDB}/AdvancedSearch/${urlApiKeyIMDB}?title=${params.title}`; //pendiente de verificar body
+            url = `${urlBaseIMDB}/AdvancedSearch/${urlApiKeyIMDB}?title=${query.title}`; //pendiente de verificar body
             break;
         case 'getMovieExt':            
             url = `${urlBaseIMDB}/Title/${urlApiKeyIMDB}/${params.id}`; //pendiente de verificar id
