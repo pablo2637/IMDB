@@ -14,11 +14,11 @@ const fetchData = async (tipo, data) => {
     let url = '';
     let options = {};
 
-    console.log(params, query, params, body)
+    console.log(params, query, body);
 
     switch (tipo) {
 
-        //API interna mongo **************************************************
+        //API interna: MongoDB **************************************************
         case 'getMoviesInt':
             url = `${urlBase}/${urlAPI}/${urlMoviesMongo}`;
             break;
@@ -47,12 +47,12 @@ const fetchData = async (tipo, data) => {
             break;
         
 
-        //Api externa imdb **************************************************
+        //API externa: IMDb **************************************************
         case 'getMoviesExt':
-            url = `${urlBaseIMDB}/AdvancedSearch/${urlApiKeyIMDB}?title=${query.title}`; //pendiente de verificar body
+            url = `${urlBaseIMDB}/AdvancedSearch/${urlApiKeyIMDB}?title=${query.title}`; // busca por query "title"
             break;
         case 'getMovieExt':            
-            url = `${urlBaseIMDB}/Title/${urlApiKeyIMDB}/${params.id}`; //pendiente de verificar id
+            url = `${urlBaseIMDB}/Title/${urlApiKeyIMDB}/${params.movie_id}`; // busca por params "movie_id"
             break;
 
 
@@ -101,4 +101,4 @@ const fetchData = async (tipo, data) => {
     };
 };
 
-module.exports = { fetchData }
+module.exports = { fetchData };
