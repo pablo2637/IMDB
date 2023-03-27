@@ -5,7 +5,7 @@ const urlMoviesMongo = 'movies/mongo';
 // const urlMoviesIMDB = 'movies/imdb';
 const urlBaseIMDB = 'https://imdb-api.com/API';
 const urlDashboardUser = 'dashboard-usuario'
-const urlAPIKeyAlternativa = process.env.API_KEY; // IMDb API key alternativa para seguir haciendo pruebas
+const urlAPIKeyAlternativa = process.env.API_KEY_ALEON; // IMDb API key alternativa para seguir haciendo pruebas
 
 const fetchData = async (tipo, data) => {
     const body = data.body;
@@ -56,28 +56,6 @@ const fetchData = async (tipo, data) => {
         case 'getMovieExt':            
             //url = `${urlBaseIMDB}/Title/${urlApiKeyIMDB}/${params.movie_id}`; // busca por params "movie_id"
             url = `${urlBaseIMDB}/Title/${urlAPIKeyAlternativa}/${params.movie_id}`; // ruta con API key alternativa para pruebas
-            break;
-
-
-        //?API interna SQL: usuarios.favoritas **************************************************
-        case 'getMoviesFav':
-            url = `${urlBase}/${urlDashboardUser}/favoritas/${params.id_user}`;
-            break;
-        case 'guardarMovieFav':
-            url = `${urlBase}/${urlDashboardUser}/guardar-fav/${params.id_user}?id_movie=${params.id_movie}`; //! pendiente revisar
-            options = {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: bodyJSON // params.id_movie
-            }
-            break;
-        case 'actualizarMoviesFav':
-            url = `${urlBase}/${urlDashboardUser}/eliminar-fav/${params.id_user}?id_movie=${params.id_movie}`; //! pendiente revisar
-            options = {
-                method: 'PUT',
-                headers: { 'Content-Type': 'application/json' },
-                body: bodyJSON // params.id_movie
-            };
             break;
     };
 
