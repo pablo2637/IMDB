@@ -85,7 +85,7 @@ const addFavorite = async (req, res) => {
 const deleteFavorite = async (req, res) => {
 
     const datos = {
-        user_id: req.params.id,
+        user_id: req.params.user_id,
         movie_id: req.query.movie_id
     };
 
