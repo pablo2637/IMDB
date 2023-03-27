@@ -5,6 +5,7 @@ const urlMoviesMongo = 'movies/mongo';
 // const urlMoviesIMDB = 'movies/imdb';
 const urlBaseIMDB = 'https://imdb-api.com/API';
 const urlDashboardUser = 'dashboard-usuario'
+const urlAPIKeyAlternativa = process.env.API_KEY; // IMDb API key alternativa para seguir haciendo pruebas
 
 const fetchData = async (tipo, data) => {
     const body = data.body;
@@ -49,10 +50,12 @@ const fetchData = async (tipo, data) => {
 
         //API externa: IMDb **************************************************
         case 'getMoviesExt':
-            url = `${urlBaseIMDB}/AdvancedSearch/${urlApiKeyIMDB}?title=${query.title}`; // busca por query "title"
+            //url = `${urlBaseIMDB}/AdvancedSearch/${urlApiKeyIMDB}?title=${query.title}`; // busca por query "title"
+            url = `${urlBaseIMDB}/AdvancedSearch/${urlAPIKeyAlternativa}?title=${query.title}`; // ruta con API key alternativa para pruebas
             break;
         case 'getMovieExt':            
-            url = `${urlBaseIMDB}/Title/${urlApiKeyIMDB}/${params.movie_id}`; // busca por params "movie_id"
+            //url = `${urlBaseIMDB}/Title/${urlApiKeyIMDB}/${params.movie_id}`; // busca por params "movie_id"
+            url = `${urlBaseIMDB}/Title/${urlAPIKeyAlternativa}/${params.movie_id}`; // ruta con API key alternativa para pruebas
             break;
 
 
