@@ -8,7 +8,8 @@ const {
     getMovie,
     postMovie,
     putMovie,
-    deleteMovie } = require('../controllers/controllerApiMoviesAdmin');
+    deleteMovie,
+    getMovieTitle } = require('../controllers/controllerApiMoviesAdmin');
 
 
 //Faltan validaciones una vez que tengamos el middleware
@@ -16,6 +17,8 @@ const {
 router.get('/', getMovies);                 //Trae todas las películas
 
 router.get('/:id', getMovie);               //Trae una película
+
+router.get('/title/:title', getMovieTitle); //Trae una película por semejanzas de título
 
 router.post('/',[
     check("title","El titulo de la película es obligatorio")

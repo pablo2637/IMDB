@@ -23,6 +23,33 @@ const getMovies = async (req, res) => {
     }
 }
 
+//Trae una película por titulo
+const getMovieTitle = async ({ params }, res) => {    
+    try {
+        const response = await Movie.find();
+        if (!response) return res.status(400).json({
+            ok: false,
+            msg: `getMovieTitle: no se ha encontrado la película con titulo: ${params.title}`,
+            id: params.id
+        })
+        
+        const data = response.filter(({ title }) => title = title.split(' ')
+            .find(mv => params.title.includes(mv)))
+        
+        return res.status(200).json({
+            ok: true,
+            msg: `getMovieTitle: OK, titulo:${params.title}`,
+            response: data
+        })
+    } catch (e) {
+        return res.status(500).json({
+            ok: false,
+            msg: 'Error en getMovieTitle',
+            error: e
+        })
+    }
+}
+
 //Trae una película
 const getMovie = async ({ params }, res) => {
     try {
@@ -122,6 +149,7 @@ const deleteMovie = async ({ params }, res) => {
 
 module.exports = {
     getMovies,
+    getMovieTitle,
     getMovie,
     postMovie,
     putMovie,
