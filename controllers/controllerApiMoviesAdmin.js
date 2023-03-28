@@ -115,7 +115,7 @@ const deleteMovie = async ({ params }, res) => {
         return res.status(500).json({
             ok: false,
             msg: 'Error en deleteMovie',
-            e
+            
         })
     }
 }
@@ -123,7 +123,6 @@ const deleteMovie = async ({ params }, res) => {
 module.exports = {
     getMovies,
     getMovie,
-    formularioNuevaPelicula,
     postMovie,
     putMovie,
     deleteMovie
