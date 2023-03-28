@@ -3,11 +3,10 @@ const {Pool} = require('pg');
 const queries = require('./queries');
 
 const pool = new Pool({
-    host: 'localhost',
-    user: 'postgres',
-    database: 'imdb',
-    password: 'admin',
-    //ssl: { rejectUnauthorized: false }
+    host: process.env.ELEPHANT_HOST,
+    user: process.env.ELEPHANT_USERDB,
+    database: process.env.ELEPHANT_DB,
+    password: process.env.ELEPHANT_PASS
 });
 
 
