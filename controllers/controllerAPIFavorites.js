@@ -10,7 +10,7 @@ const {
 const getFavorites = async (req, res) => {
 
 
-    const id = 1; // no sé si capturamos el id del params (habría que modificar la ruta (/:id) o de otra parte, pero lo "falseo" de momento
+    const id = req.params.user_id; // no sé si capturamos el id del params (habría que modificar la ruta (/:id) o de otra parte, pero lo "falseo" de momento
 
     try {
 
@@ -85,7 +85,7 @@ const addFavorite = async (req, res) => {
 const deleteFavorite = async (req, res) => {
 
     const datos = {
-        user_id: req.params.id,
+        user_id: req.params.user_id,
         movie_id: req.query.movie_id
     };
 
