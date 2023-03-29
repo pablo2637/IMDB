@@ -127,7 +127,7 @@ const fetchOpinionsRT = async (title, year, noShow = true, log = false, limit = 
 
     const urlRT = 'https://www.rottentomatoes.com/search?search=';
     const titleSearch = title.replaceAll(' ', '_').toLowerCase();
-    title = title.replaceAll('+', '%20').replaceAll('+ ', '%20');
+    title = title.replaceAll('+', '%20').replaceAll(' ', '%20');
     const yearSearch = `(${year})`;
 
     let x = 0;
@@ -178,11 +178,12 @@ const fetchOpinionsRT = async (title, year, noShow = true, log = false, limit = 
             const selLink = 'https://www.rottentomatoes.com/m/' + titleSearch;
             link = data.find(tit => tit == selLink);
             //Si tampoco hay coincidencia devuelve el mensaje y termina el proceso
-            if (!link) return {
-                ok: false,
-                msg: 'Error: No se encontró la película.'
-            }
-        } else link = dataST[x - 1].href;
+            if (!link) link = dataST[0].href
+            // return {                
+            //     ok: false,
+            //     msg: 'Error: No se encontró la película.'
+            // }
+        } else link = dataST[x - 1].href;        
 
         //Redireccionando a la web de la película
         if (log) console.log('Redirecting to movie:', link);

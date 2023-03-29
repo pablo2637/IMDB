@@ -5,12 +5,12 @@ const {getMovies, getMovie} = require('../controllers/controllerAPIExterna')
 
 
 
-//* VIEW USUARIO: BUSCAR PELÍCULA (obtener todas las películas)
-router.get('/:title', getMovies);
+//* BUSCAR TODAS LAS PELÍCULAS POR QUERY "TITLE" EN API IMDb
+router.get('/', getMovies);
 
 
-//* VIEW USUARIO: DETALLE PELÍCULA (obtener una película)
-router.get('/id/:id', getMovie);
+//* BUSCAR UNA PELÍCULA POR PARAMS "movie_id" EN API IMDb
+router.get('/:movie_id', getMovie);
 
 
 

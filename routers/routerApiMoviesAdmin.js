@@ -8,7 +8,8 @@ const {
     getMovie,
     postMovie,
     putMovie,
-    deleteMovie } = require('../controllers/controllerApiMoviesAdmin');
+    deleteMovie,
+    getMovieTitle } = require('../controllers/controllerApiMoviesAdmin');
 
 
 //Faltan validaciones una vez que tengamos el middleware
@@ -67,6 +68,7 @@ router.post('/',
 //     }),
 //     validarInputs
  postMovie);                //Crea una nueva película
+
 
 router.put('/:id', putMovie);               //Modifica la película
 
