@@ -54,7 +54,6 @@ const MovieSchema = new Schema({
             type : String}
     },
 
-
 })
 
 module.exports = model('Movie', MovieSchema);

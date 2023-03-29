@@ -21,7 +21,7 @@ router.get('/nueva', mostrarFormularioNueva);
 
 
 //* CREAR NUEVA PELÍCULA
-router.post('/crear-pelicula',); // ruta del action del form
+router.post('/crear-pelicula', crearMovieNueva); // ruta del action del form
 
 
 //* MOSTRAR EL FORMULARIO DE EDITAR PELÍCULA
@@ -30,7 +30,9 @@ router.get('/editar/:id', mostrarFormularioEditar);
 
 //* EDITAR UNA PELÍCULA
 router.post('/editar/:id', editarMovie);
+
 // ruta del action del form
+
 
 
 //* ELIMINAR UNA PELÍCULA
