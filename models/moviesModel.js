@@ -37,8 +37,24 @@ const MovieSchema = new Schema({
         trim: true
     },
     imdbRating: {
-        type: String,
-    }
+        type: Number,
+    },
+
+    opinions: {
+        escritor: {
+            type : String},
+
+        fecha: {
+            type : Date},
+
+        url: {
+            type : String},
+
+        opinion: {
+            type : String}
+    },
+
+
 })
 
 module.exports = model('Movie', MovieSchema);

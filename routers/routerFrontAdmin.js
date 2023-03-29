@@ -25,11 +25,11 @@ router.post('/crear-pelicula',); // ruta del action del form
 
 
 //* MOSTRAR EL FORMULARIO DE EDITAR PELÍCULA
-router.get('/dashboard-admin/editar/:id', mostrarFormularioEditar);
+router.get('/editar/:id', mostrarFormularioEditar);
 
 
 //* EDITAR UNA PELÍCULA
-router.post('/dashboard-admin/editar/:id', editarMovie);
+router.post('/editar/:id', editarMovie);
 // ruta del action del form
 
 
