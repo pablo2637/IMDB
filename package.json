@@ -20,7 +20,6 @@
     "express-openid-connect": "^2.12.1",
     "express-validator": "^6.15.0",
     "mongoose": "^7.0.2",
-    "node-fetch": "^2.6.9",
     "pg": "^8.10.0",
     "puppeteer": "^19.7.5",
     "puppeteer-extra": "^3.3.6",

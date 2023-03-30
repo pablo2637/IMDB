@@ -3,7 +3,6 @@ const urlAPI = 'api';
 const urlApiKeyIMDB = process.env.API_IMDB;
 const urlMoviesMongo = 'movies/mongo';
 const urlBaseIMDB = 'https://imdb-api.com/API';
-const fetch = require('node-fetch');
 
 const fetchData = async (tipo, data) => {
     const body = data.body;

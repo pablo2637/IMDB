@@ -121,13 +121,11 @@ const fetchOpinionsSC = async (title, year, noShow = true, log = false, limit = 
     }
 }
 
-
-
 const fetchOpinionsRT = async (title, year, noShow = true, log = false, limit = 2) => {
 
     const urlRT = 'https://www.rottentomatoes.com/search?search=';
-    const titleSearch = title.replace(' ', '_').toLowerCase();
-    //title = title.replaceAll('+', '%20').replaceAll(' ', '%20');
+    const titleSearch = title.replaceAll(' ', '_').toLowerCase();
+    // title = title.replaceAll('+', '%20').replaceAll(' ', '%20');
     const yearSearch = `(${year})`;
 
     let x = 0;
