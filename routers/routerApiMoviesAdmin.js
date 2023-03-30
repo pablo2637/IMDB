@@ -72,97 +72,127 @@ router.post('/',
  postMovie);                //Crea una nueva película
 
 router.post('/', [
+//titulo de la pelicula
+check("title", "El titulo de la película es obligatorio")
+    .not()
+    .isEmpty(),
 
 
+//año
+check("year", "Se necesita el año de creación de la película")
+    .not()
+    .isEmpty()
+    .isInt({ min: 1800, max: 2024 }),
 
+//Directores 
+check("directors", "Rellenar todos los campos")
+    .not()
+    .isEmpty(),
+
+//Actores
+check("stars", "Rellenar el campo de Actores")
+    .not()
+    .isEmpty(),
+
+//Generos
+check("genres", "Introduzca un genero valido")
+    .not()
+    .isEmpty(),
+
+//Duracion
+check("runtimeStr", "Introduzca la duración de la película expresada en minutos")
+    .not()
+    .isEmpty()
+    .isInt({ min: 1 }),
+
+//Plot
+check("plot", "Introduzca un sinopsis de la película")
+    .not(),
+    
     //titulo de la pelicula
-    check("title", "El titulo de la película es obligatorio")
-        .not()
-        .isEmpty(),
+check("title", "El titulo de la película es obligatorio")
+    .not()
+    .isEmpty(),
 
 
-    //Imagen
-    check("image", "Le falta por rellenar este campo con una URL valida")
-        .not()
-        .isEmpty()
-        .isURL(),
+//año
+check("year", "Se necesita el año de creación de la película")
+    .not()
+    .isEmpty()
+    .isInt({ min: 1800, max: 2024 }),
 
-    //año
-    check("year", "Se necesita el año de creación de la película")
-        .not()
-        .isEmpty()
-        .custom((value, { req }) => {
-            if (value < 1800 || value > 2024) {
-                throw new Error("Introduce un año valido")
-            }
-            return true
-        }),
+//Directores 
+check("directors", "Rellenar todos los campos")
+    .not()
+    .isEmpty(),
 
+//Actores
+check("stars", "Rellenar el campo de Actores")
+    .not()
+    .isEmpty(),
 
-    //Directores 
-    check("directors", "Rellenar todos los campos")
-        .not()
-        .isEmpty(),
+//Generos
+check("genres", "Introduzca un genero valido")
+    .not()
+    .isEmpty(),
 
-    //Actores
-    check("stars", "Rellenar el campo de Actores")
-        .not()
-        .isEmpty(),
+//Duracion
+check("runtimeStr", "Introduzca la duración de la película expresada en minutos")
+    .not()
+    .isEmpty()
+    .isInt({ min: 1 }),
 
+//Plot
+check("plot", "Introduzca un sinopsis de la película")
+    .not()
+    .isEmpty(),
 
-    //Generos
-    check("genres", "introduzca un genero valido")
-        .not()
-        .isEmpty(),
+//Calificación
+check("rating", "Introduzca una calificación válida (entre 0 y 5)")
+    .not()
+    .isEmpty()
+    .isFloat({ min: 0, max: 5 }),
 
+//Opiniones
+check("opinion", "Introduzca una opinión sobre la película")
+    .not()
+    .isEmpty(),
 
-    // //Duracion
-    // check("runtimeStr", "introduzca la duración de la película")
-    //     .isEmpty()
-    //     .not(),
+//Fecha
+check("fecha", "Introduzca una fecha válida en formato ISO 8601 (por ejemplo, 2023-03-30)")
+    .not()
+    .isEmpty()
+    .isISO8601(),
 
-    //Plot
-    check("plot", "introduzca un sinopsis de la película")
-        .not()
-        .isEmpty(),
-
-
-    //Estrellas
-    // check("imDbRating", "introduzca un ratio valido")
-    //     .isEmpty()
-    //     .not()
-    //     .custom((value, { req }) => {
-    //         if (value <= 0 || value >= 5) {
-    //             throw new Error("Debe estar en 0 y 5 estrellas")
-    //         }
-    //         return true
-    //     }),
-
-    //Opiniones
-    check("opinions", "introduzca un sinopsis de la película")
-        .not()
-        .isEmpty(),
+//Escritor
+check("escritor", "Introduzca el nombre del escritor de la película")
+    .not()
+    .isEmpty(),
 
 
-    // //date
-    // check("dates", "Introduzca una fecha valida")
-    //     .not()
-    //     .isEmpty(),
+//Calificación
+check("rating", "Introduzca una calificación válida (entre 0 y 10)")
+    .not()
+    .isEmpty()
+    .isFloat({ min: 0, max: 10 }),
 
-    //Escritor
-    check("escritor", "introduzca un sinopsis de la película")
-        .not()
-        .isEmpty(),
+//Opiniones
+check("opinion", "Introduzca una opinión sobre la película")
+    .not()
+    .isEmpty(),
 
+//Fecha
+check("fecha", "Introduzca una fecha válida en formato ISO 8601 (por ejemplo, 2023-03-30)")
+    .not()
+    .isEmpty()
+    .isISO8601(),
 
-    // //Url
-    // check("url", "Le falta por rellenar este campo con una URL valida")
-    //     .not()
-    //     .isEmpty()
-    //     .isURL(),
+//Escritor
+check("escritor", "Introduzca el nombre del escritor de la película")
+    .not()
+    .isEmpty(),
 
-    validarInputs
-
+validarInputs
 ], postMovie);                //Crea una nueva película
 
 
