@@ -6,7 +6,7 @@ puppeteer.use(pluginStealth());
 const fetchOpinionsSC = async (title, year, noShow = true, log = false, limit = 2) => {
 
     const urlRT = 'https://www.sensacine.com/buscar/?q=';
-    title = title.replaceAll('+', '%20').replaceAll(' ', '%20');
+    //title = title.replaceAll('+', '%20').replaceAll(' ', '%20');
     let link, x = 0, oyNum = 0;
     let foundIt = false, onlyYear = false;
 
@@ -127,7 +127,7 @@ const fetchOpinionsRT = async (title, year, noShow = true, log = false, limit = 
 
     const urlRT = 'https://www.rottentomatoes.com/search?search=';
     const titleSearch = title.replaceAll(' ', '_').toLowerCase();
-    title = title.replaceAll('+', '%20').replaceAll(' ', '%20');
+    //title = title.replaceAll('+', '%20').replaceAll(' ', '%20');
     const yearSearch = `(${year})`;
 
     let x = 0;

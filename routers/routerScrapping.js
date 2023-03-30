@@ -14,47 +14,18 @@ const {
 router.get('/rt', async ({ query, body }, res) => {
     if (body.log) console.log('query:', query, 'body:', body)
     const opinionesRT = await fetchOpinionsRT(query.title, query.year, body.noShow, body.log, body.limit);
-    // const opinionesSC = await fetchOpinionsSC(query.title, query.year, body.noShow, body.log, body.limit);
-
-    // if (opinionesRT.ok && opinionesSC.ok) return res.status(200).json({
-    //     RT: opinionesRT,
-    //     SC: opinionesSC
-    // })
-    if (opinionesRT.ok) return res.status(200).json(opinionesRT);
-    // RT: opinionesRT,
-    // SC: []
-    // })
-    // else if (!opinionesRT.ok && opinionesSC.ok) return res.status(200).json({
-    //     RT: [],
-    //     SC: opinionesSC
-    // })
+    
+    if (opinionesRT.ok) return res.status(200).json(opinionesRT);   
     else return res.status(500).json(opinionesRT);
-    // RT: opinionesRT,
-    // SC: opinionesSC
-    // })
+  
 })
 
 router.get('/sc', async ({ query, body }, res) => {
-    if (body.log) console.log('query:', query, 'body:', body)
-    // const opinionesRT = await fetchOpinionsRT(query.title, query.year, body.noShow, body.log, body.limit);
+    if (body.log) console.log('query:', query, 'body:', body)    
     const opinionesSC = await fetchOpinionsSC(query.title, query.year, body.noShow, body.log, body.limit);
-
-    // if (opinionesRT.ok && opinionesSC.ok) return res.status(200).json({
-    //     RT: opinionesRT,
-    //     SC: opinionesSC
-    // })
-    // else if (opinionesRT.ok && !opinionesSC.ok) return res.status(200).json({
-    //     RT: opinionesRT,
-    //     SC: []
-    // })
-    if (opinionesSC.ok) return res.status(200).json(opinionesSC)
-    //     RT: [],
-    //     SC: opinionesSC
-    // })
-    else return res.status(500).json(opinionesSC);
-    // RT: opinionesRT,
-    // SC: opinionesSC
-    // })
+    
+    if (opinionesSC.ok) return res.status(200).json(opinionesSC)   
+    else return res.status(500).json(opinionesSC);    
 })
 
 module.exports = router;
