@@ -8,7 +8,7 @@ const getMovies = async (req, res) => {
     const tipo = 'getMoviesExt';
 
     const { data } = await fetchData(tipo, req);
-
+    
     const { results } = data;
 
     const arrayMovies = [];

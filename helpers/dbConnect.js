@@ -5,7 +5,7 @@ const connect = async () => {
         const response = await moongose.connect(process.env.URI_CONNECT);
         console.log('Connected to the database...');
         return response;
-    } catch {
+    } catch (error) {
         return {
             ok: false,
             msg: 'Connecion failure.',

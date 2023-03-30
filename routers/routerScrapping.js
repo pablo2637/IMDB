@@ -11,27 +11,50 @@ const {
 //          noShow: (boolean) decide si se muestra el navegador. Default: true
 //          log: (boolean) decide si se muestra un log en la consola con los pasos de la función. Default:false
 //          limit: (number) la cantidad de opiniones que se recogerán. Default:2
-router.get('/', async ({ query, body }, res) => {
+router.get('/rt', async ({ query, body }, res) => {
     if (body.log) console.log('query:', query, 'body:', body)
     const opinionesRT = await fetchOpinionsRT(query.title, query.year, body.noShow, body.log, body.limit);
+    // const opinionesSC = await fetchOpinionsSC(query.title, query.year, body.noShow, body.log, body.limit);
+
+    // if (opinionesRT.ok && opinionesSC.ok) return res.status(200).json({
+    //     RT: opinionesRT,
+    //     SC: opinionesSC
+    // })
+    if (opinionesRT.ok) return res.status(200).json(opinionesRT);
+    // RT: opinionesRT,
+    // SC: []
+    // })
+    // else if (!opinionesRT.ok && opinionesSC.ok) return res.status(200).json({
+    //     RT: [],
+    //     SC: opinionesSC
+    // })
+    else return res.status(500).json(opinionesRT);
+    // RT: opinionesRT,
+    // SC: opinionesSC
+    // })
+})
+
+router.get('/sc', async ({ query, body }, res) => {
+    if (body.log) console.log('query:', query, 'body:', body)
+    // const opinionesRT = await fetchOpinionsRT(query.title, query.year, body.noShow, body.log, body.limit);
     const opinionesSC = await fetchOpinionsSC(query.title, query.year, body.noShow, body.log, body.limit);
 
-    if (opinionesRT.ok && opinionesSC.ok) return res.status(200).json({
-        RT: opinionesRT,
-        SC: opinionesSC
-    })
-    else if (opinionesRT.ok && !opinionesSC.ok) return res.status(200).json({
-        RT: opinionesRT,
-        SC: []
-    })
-    else if (!opinionesRT.ok && opinionesSC.ok) return res.status(200).json({
-        RT: [],
-        SC: opinionesSC
-    })
-    else return res.status(500).json({
-        RT: opinionesRT,
-        SC: opinionesSC
-    })
+    // if (opinionesRT.ok && opinionesSC.ok) return res.status(200).json({
+    //     RT: opinionesRT,
+    //     SC: opinionesSC
+    // })
+    // else if (opinionesRT.ok && !opinionesSC.ok) return res.status(200).json({
+    //     RT: opinionesRT,
+    //     SC: []
+    // })
+    if (opinionesSC.ok) return res.status(200).json(opinionesSC)
+    //     RT: [],
+    //     SC: opinionesSC
+    // })
+    else return res.status(500).json(opinionesSC);
+    // RT: opinionesRT,
+    // SC: opinionesSC
+    // })
 })
 
 module.exports = router;
