@@ -10,10 +10,17 @@ const favorites = {
     queryDeleteFavorite:`
     DELETE FROM favorites
     WHERE user_id=$1 AND movie_id=$2`,
+    queryDeleteAllFavorites:`
+    DELETE FROM favorites
+    WHERE movie_id=$1`,
+    querySearchUserMovieByID:`
+    SELECT *
+    FROM favorites
+    WHERE user_id=$1 AND movie_id=$2`,
     querySearchMovieByID:`
     SELECT *
     FROM favorites
-    WHERE user_id=$1 AND movie_id=$2`
+    WHERE movie_id=$1`
 };
 
 
