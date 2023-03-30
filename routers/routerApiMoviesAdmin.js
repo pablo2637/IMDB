@@ -18,6 +18,8 @@ router.get('/', getMovies);                 //Trae todas las películas
 
 router.get('/:id', getMovie);               //Trae una película
 
+router.get('/title/:title', getMovieTitle);               //Trae una película
+
 router.post('/',
 //     check("title","El titulo de la película es obligatorio")
 //     .not()

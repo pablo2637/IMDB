@@ -24,7 +24,7 @@ const getMovies = async (req, res) => {
 }
 
 //Trae una película por titulo
-const getMovieTitle = async ({ params }, res) => {    
+const getMovieTitle = async ({ params }, res) => {
     try {
         const response = await Movie.find();
         if (!response) return res.status(400).json({
@@ -32,10 +32,9 @@ const getMovieTitle = async ({ params }, res) => {
             msg: `getMovieTitle: no se ha encontrado la película con titulo: ${params.title}`,
             id: params.id
         })
-        
         const data = response.filter(({ title }) => title = title.toLowerCase().split(' ')
-            .find(mv => params.title.toLowerCase().includes(mv)))
-        
+            .find(mv => params.title.toLowerCase().includes(mv)));
+
         return res.status(200).json({
             ok: true,
             msg: `getMovieTitle: OK, titulo:${params.title}`,
@@ -59,7 +58,7 @@ const getMovie = async ({ params }, res) => {
             msg: `getMovie: no se ha encontrado la película con _id: ${params.id}`,
             id: params.id
         })
-        
+
         return res.status(200).json({
             ok: true,
             msg: `getMovie: OK, _id:${params.id}`,
@@ -102,12 +101,12 @@ const putMovie = async ({ params, body }, res) => {
             id: params.id
         })
 
-        const response = await Movie.findByIdAndUpdate(params.id, body);        
+        const response = await Movie.findByIdAndUpdate(params.id, body);
         if (!response) return res.status(400).json({
             ok: false,
             msg: `putMovie: falló al intentar modificar la película con _id: ${params.id}`,
             response
-        })      
+        })
 
         return res.status(201).json({
             ok: true,
@@ -142,7 +141,7 @@ const deleteMovie = async ({ params }, res) => {
         return res.status(500).json({
             ok: false,
             msg: 'Error en deleteMovie',
-            
+
         })
     }
 }
