@@ -51,11 +51,11 @@ const fetchData = async (tipo, data) => {
         //API externa: IMDb **************************************************
         case 'getMoviesExt':
             //url = `${urlBaseIMDB}/AdvancedSearch/${urlApiKeyIMDB}?title=${query.title}`; // busca por query "title"
-            url = `${urlBaseIMDB}/AdvancedSearch/${urlAPIKeyAlternativa}?title=${query.title}`; // ruta con API key alternativa para pruebas
+            url = `${urlBaseIMDB}/AdvancedSearch/${urlApiKeyIMDB}?title=${query.title}`; // ruta con API key alternativa para pruebas
             break;
         case 'getMovieExt':            
             //url = `${urlBaseIMDB}/Title/${urlApiKeyIMDB}/${params.movie_id}`; // busca por params "movie_id"
-            url = `${urlBaseIMDB}/Title/${urlAPIKeyAlternativa}/${params.movie_id}`; // ruta con API key alternativa para pruebas
+            url = `${urlBaseIMDB}/Title/${urlApiKeyIMDB}/${params.movie_id}`; // ruta con API key alternativa para pruebas
             break;
     };
 

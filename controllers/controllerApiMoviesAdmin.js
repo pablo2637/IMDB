@@ -33,8 +33,8 @@ const getMovieTitle = async ({ params }, res) => {
             id: params.id
         })
         
-        const data = response.filter(({ title }) => title = title.split(' ')
-            .find(mv => params.title.includes(mv)))
+        const data = response.filter(({ title }) => title = title.toLowerCase().split(' ')
+            .find(mv => params.title.toLowerCase().includes(mv)))
         
         return res.status(200).json({
             ok: true,
