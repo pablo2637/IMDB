@@ -1,7 +1,5 @@
 const { fetchData } = require('../helpers/fetchData')
 
-
-
 // obtener todas las películas de API IMDb por query "title"
 const getMovies = async (req, res) => {
 

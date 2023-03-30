@@ -1,4 +1,3 @@
-const { body } = require('express-validator');
 const {fetchData} = require('../helpers/fetchData');
 
 
