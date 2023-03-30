@@ -2,10 +2,8 @@ const urlBase = process.env.URL_BASE;
 const urlAPI = 'api';
 const urlApiKeyIMDB = process.env.API_IMDB;
 const urlMoviesMongo = 'movies/mongo';
-// const urlMoviesIMDB = 'movies/imdb';
 const urlBaseIMDB = 'https://imdb-api.com/API';
-const urlDashboardUser = 'dashboard-usuario'
-const urlAPIKeyAlternativa = process.env.API_KEY_ALEON; // IMDb API key alternativa para seguir haciendo pruebas
+const fetch = require('cross-fetch');
 
 const fetchData = async (tipo, data) => {
     const body = data.body;
@@ -46,15 +44,13 @@ const fetchData = async (tipo, data) => {
             url = `${urlBase}/${urlAPI}/${urlMoviesMongo}/${params.id}`;
             options = { method: 'DELETE' }
             break;
-        
+
 
         //API externa: IMDb **************************************************
         case 'getMoviesExt':
-            //url = `${urlBaseIMDB}/AdvancedSearch/${urlApiKeyIMDB}?title=${query.title}`; // busca por query "title"
             url = `${urlBaseIMDB}/AdvancedSearch/${urlApiKeyIMDB}?title=${query.title}`; // ruta con API key alternativa para pruebas
             break;
-        case 'getMovieExt':            
-            //url = `${urlBaseIMDB}/Title/${urlApiKeyIMDB}/${params.movie_id}`; // busca por params "movie_id"
+        case 'getMovieExt':
             url = `${urlBaseIMDB}/Title/${urlApiKeyIMDB}/${params.movie_id}`; // ruta con API key alternativa para pruebas
             break;
     };
