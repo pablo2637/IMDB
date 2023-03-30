@@ -99,7 +99,37 @@ const modelDeleteFavorite = async (datos) => {
 }; //!FUNC-MODELDELETEFAVORITE
 
 
-const modelSearchMovieByID = async (datos) => {
+const modelDeleteAllFavorites = async (id) => {
+
+    let client, result;
+
+    const movie_id = id;
+
+    try {
+
+        client = await pool.connect();
+
+        const data = await client.query(queries.queryDeleteAllFavorites, [movie_id]);
+
+        result = data;
+        
+    } catch (error) {
+        
+        console.log(error);
+        throw error;
+
+    } finally {
+
+        client.release();
+
+    };
+
+    return result;
+
+}; //!FUNC-MODELDELETEALLFAVORITES
+
+
+const modelSearchUserMovieByID = async (datos) => {
 
     let client, result;
 
@@ -109,10 +139,40 @@ const modelSearchMovieByID = async (datos) => {
 
         client = await pool.connect();
 
-        const data = await client.query(queries.querySearchMovieByID, [user_id, movie_id]);
+        const data = await client.query(queries.querySearchUserMovieByID, [user_id, movie_id]);
 
         data.rowCount == 0 ? result = false : result = true;
                 
+    } catch (error) {
+
+        console.log(error);
+        throw error;
+        
+    } finally {
+
+        client.release();
+
+    };
+
+    return result;
+
+}; //!FUNC-MODELSEARCHUSERMOVIEBYID
+
+
+const modelSearchMovieByID = async (id) => {
+
+    let client, result;
+
+    const movie_id = id;
+
+    try {
+
+        client = await pool.connect();
+
+        const data = await client.query(queries.querySearchMovieByID, [movie_id]);
+
+        data.rowCount == 0 ? result = false : result = true;
+        
     } catch (error) {
 
         console.log(error);
@@ -134,5 +194,7 @@ module.exports = {
     modelGetFavorites,
     modelAddFavorite,
     modelDeleteFavorite,
+    modelDeleteAllFavorites,
+    modelSearchUserMovieByID,
     modelSearchMovieByID
 };

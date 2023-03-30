@@ -2,6 +2,8 @@ const {
     modelGetFavorites,
     modelAddFavorite,
     modelDeleteFavorite,
+    modelDeleteAllFavorites,
+    modelSearchUserMovieByID,
     modelSearchMovieByID
 } = require('../models/modelFavorites');
 
@@ -49,7 +51,7 @@ const addFavorite = async (req, res) => {
 
     try {
 
-        const searchMovie = await modelSearchMovieByID(req.body);
+        const searchMovie = await modelSearchUserMovieByID(req.body);
 
         if(!searchMovie){ // si no existe movie_id en user_id, sí se guarda como favorita en la lista del usuario
 
@@ -91,7 +93,7 @@ const deleteFavorite = async (req, res) => {
 
     try {
 
-        const searchMovie = await modelSearchMovieByID(datos);
+        const searchMovie = await modelSearchUserMovieByID(datos);
 
         if(searchMovie){ // al contrario que en addFavorite, si movie_id y user_id coinciden y existen en la base de datos, se elimina la favorita de la lista del usuario
 
@@ -124,9 +126,49 @@ const deleteFavorite = async (req, res) => {
 }; //!FUNC-DELETEFAVORITE
 
 
+const deleteAllFavorites = async (req, res) => {
+
+    const id = req.params.movie_id;
+
+    try {
+
+        const searchMovie = await modelSearchMovieByID(id);
+
+        if(searchMovie){
+
+            await modelDeleteAllFavorites(id);
+
+            return res.status(200).json({
+                ok: true,
+                msg: `Se ha eliminado la película con ID '${id}' de la base de datos.`
+            });
+
+        }else{
+
+            return res.status(400).json({
+                ok: false,
+                msg: `ERROR: no se ha encontrado ninguna película con ID '${id}' en la base de datos.`
+            });
+
+        };
+        
+    } catch (error) {
+
+        return res.status(500).json({
+            ok: false,
+            msg: 'ERROR: contacte con el administrador.',
+            error
+        });
+        
+    };
+
+}; //!FUNC-DELETEALLFAVORITES
+
+
 
 module.exports = {
     getFavorites,
     addFavorite,
-    deleteFavorite
+    deleteFavorite,
+    deleteAllFavorites
 };
