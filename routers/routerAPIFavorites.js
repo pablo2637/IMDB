@@ -4,7 +4,8 @@ const router = express.Router();
 const {
     getFavorites,
     addFavorite,
-    deleteFavorite
+    deleteFavorite,
+    deleteAllFavorites
 } = require('../controllers/controllerAPIFavorites')
 
 
@@ -19,6 +20,10 @@ router.post('/', addFavorite); // de momento, necesito el params del user_id par
 
 //* ELIMINAR PELÍCULA FAVORITA
 router.delete('/:user_id', deleteFavorite);
+
+
+//* ELIMINAR LA PELÍCULA FAVORITA DE TODOS LOS USUARIOS
+router.delete('/delete-all/:movie_id', deleteAllFavorites);
 
 
 
